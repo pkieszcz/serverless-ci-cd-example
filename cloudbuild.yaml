@@ -1,0 +1,9 @@
+steps:
+  - id: 'Build app'
+    name: 'pkieszcz/cloud-build-toolset:latest'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+        - >
+          pwd
+timeout: '3600s'
