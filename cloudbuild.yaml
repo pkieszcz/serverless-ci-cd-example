@@ -1,21 +1,5 @@
 steps:
-  - id: 'Build app'
-    name: 'pkieszcz/cloud-build-toolset:latest'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - >
-        wget https://dl.google.com/go/go1.12.3.linux-amd64.tar.gz;
-        tar -C /usr/local -xzf go1.12.3.linux-amd64.tar.gz;
-        export PATH=$$PATH:/usr/local/go/bin;
-        echo "Getting kind";
-        go get sigs.k8s.io/kind;
-        export PATH=$$PATH:/usr/local/go/bin:~/go/bin;
-        echo "Starting the k8s cluster"
-        kind create cluster;
-        kind get kubeconfig-path;
-        kubectl cluster-info;
-        kubectl get po;
-        kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/deployment.yaml;
-        kubectl get deploy;
-timeout: '3600s'
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'test']
