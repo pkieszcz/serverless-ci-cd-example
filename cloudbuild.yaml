@@ -15,4 +15,7 @@ steps:
         kind create cluster;
         kind get kubeconfig-path;
         kubectl cluster-info;
+        kubectl get po;
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/deployment.yaml;
+        kubectl get deploy;
 timeout: '3600s'
