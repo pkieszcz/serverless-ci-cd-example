@@ -4,6 +4,15 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-        - >
-          pwd
+      - >
+        #get go
+        wget https://dl.google.com/go/go1.12.3.linux-amd64.tar.gz
+        tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
+        export PATH=$PATH:/usr/local/go/bin
+        #get kind
+        go get sigs.k8s.io/kind
+        #create cluster
+        kind create cluster
+        export KUBECONFIG="$(kind get kubeconfig-path)"
+        kubectl cluster-info
 timeout: '3600s'
