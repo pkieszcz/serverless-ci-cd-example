@@ -12,6 +12,6 @@ steps:
         go get sigs.k8s.io/kind;
         echo "Starting the k8s cluster"
         kind create cluster;
-        export KUBECONFIG="$$(kind get kubeconfig-path)";
+        kind get kubeconfig-path;
         kubectl cluster-info;
 timeout: '3600s'
