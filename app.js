@@ -1,14 +1,8 @@
-const express = require('express')
-const app = express()
-const calculatorService = require('./services/calculator');
+const express = require('express');
+const app = express();
 
-app.get('/', function (req, res) {
-  const numberOne = req.query.numberOne;
-  const numberTwo = req.query.numberTwo;
+app.get('/', (req, res) => {
+  res.status(200).send('Hello World!').end();
+});
 
-  const result = calculatorService.sum(Number(numberOne), Number(numberTwo));
-
-  res.send(`You result is ${result}`);
-})
-
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+module.exports = app
