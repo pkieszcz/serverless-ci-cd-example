@@ -10,6 +10,7 @@ steps:
         export PATH=$$PATH:/usr/local/go/bin;
         echo "Getting kind";
         go get sigs.k8s.io/kind;
+        export PATH=$$PATH:/usr/local/go/bin:~/go/bin;
         echo "Starting the k8s cluster"
         kind create cluster;
         kind get kubeconfig-path;
