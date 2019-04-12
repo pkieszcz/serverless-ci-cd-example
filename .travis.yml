@@ -23,4 +23,4 @@ jobs:
 
         # Set KUBECONFIG environment variable
         - export KUBECONFIG="$(kind get kubeconfig-path)"
-      script: kubectl cluster-info
+      script: kubectl apply -f https://raw.githubusercontent.com/kelseyhightower/conf2kube/master/examples/ssl/nginx-pod.yaml && kubectl get po -w
